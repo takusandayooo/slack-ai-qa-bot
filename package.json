@@ -1,0 +1,46 @@
+{
+  "name": "gas-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/backend.js",
+  "private": true,
+  "engines": {
+    "node": ">=18",
+    "yarn": ">=1.22"
+  },
+  "scripts": {
+    "open:prod": "clasp_config_project=.clasp.prod.json clasp open",
+    "open:dev": "clasp_config_project=.clasp.dev.json clasp open",
+    "lint": "eslint --fix src/**/*.ts",
+    "format": "prettier --write src/**/*.ts",
+    "typecheck": "tsc --noEmit",
+    "build": "node build.js",
+    "prepare": "husky",
+    "buildpush:prod": "yarn run build && cp appsscript.json build/appsscript.json && clasp_config_project=.clasp.prod.json clasp push --force",
+    "buildpush:dev": " yarn run build && cp appsscript.json build/appsscript.json && clasp_config_project=.clasp.dev.json clasp push --force",
+    "postinstall": "mkdir -p build && cp appsscript.json build/appsscript.json"
+  },
+  "dependencies": {
+    "husky": "^9.1.1",
+    "lint-staged": "^15.2.7"
+  },
+  "devDependencies": {
+    "@google/clasp": "^2.4.2",
+    "@types/google-apps-script": "^1.0.83",
+    "@typescript-eslint/eslint-plugin": "^7.16.1",
+    "@typescript-eslint/parser": "^7.16.1",
+    "esbuild": "^0.23.0",
+    "esbuild-gas-plugin": "^0.8.0",
+    "eslint": "^9.7.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "prettier": "3.3.3",
+    "typescript": "^5.5.3"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
+}

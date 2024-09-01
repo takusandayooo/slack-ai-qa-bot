@@ -3,8 +3,9 @@
     "src"
   ],
   "compilerOptions": {
+    "module": "esnext",
     "outDir": "build",
-    "target": "ES2019",
+    "target": "es2022",
     "lib": [
       "esNext",
       "DOM"

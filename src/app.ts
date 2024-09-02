@@ -57,7 +57,6 @@ export function main() {
 
 //NOTE: RAGを用いて返信メッセージを生成する
 const replyMessageByRAG = (slackClient: SlackClient, message: string, ts: string) => {
-  //TODO: RAGを用いて返信メッセージを生成する
   const config = getConfig();
   const channel = getChannelNameFromSlackChannelId(slackClient, config.SLACK_CHANNEL_TO_POST);
   Utilities.sleep(10);

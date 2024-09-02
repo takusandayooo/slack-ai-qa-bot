@@ -8,12 +8,13 @@
     "node": ">=18",
     "yarn": ">=1.22"
   },
+  "type": "module",
   "scripts": {
     "open:prod": "clasp_config_project=.clasp.prod.json clasp open",
     "open:dev": "clasp_config_project=.clasp.dev.json clasp open",
-    "lint": "eslint --fix src/**/*.ts",
-    "format": "prettier --write src/**/*.ts",
-    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/**/*",
+    "lint-fix": "pnpm lint --fix && prettier --write src/**/*",
+    "type-check": "tsc --noEmit",
     "build": "node build.js",
     "prepare": "husky",
     "buildpush:prod": "yarn run build && cp appsscript.json build/appsscript.json && clasp_config_project=.clasp.prod.json clasp push --force",
